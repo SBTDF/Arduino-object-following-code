@@ -11,51 +11,18 @@
 #define motor2Pin2 10
 
 // Distance Function
-int getDist1() {
+int getDistance(int trigPin, int echoPin) {
   long duration;
   int distance;
 
-  // Clears the trigPin condition
-  digitalWrite(trigPin1, LOW);
+  digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
-  digitalWrite(trigPin1, HIGH);
+  digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
-  digitalWrite(trigPin1, LOW);
-  duration = pulseIn(echoPin1, HIGH);
-  distance = duration * 0.034 / 2; // Distance in cm
-  
-  return distance;
-}
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+  distance = duration * 0.034 / 2;
 
-int getDist2() {
-  long duration;
-  int distance;
-  
-  // Clears the trigPin condition
-  digitalWrite(trigPin2, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin2, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin2, LOW);
-  duration = pulseIn(echoPin2, HIGH);
-  distance = duration * 0.034 / 2; // Distance in cm
-  
-  return distance;
-}
-
-int getDist3() {
-  long duration;
-  int distance;
-
-  // Clears the trigPin condition
-  digitalWrite(trigPin3, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin3, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin3, LOW);
-  duration = pulseIn(echoPin3, HIGH);
-  distance = duration * 0.034 / 2; // Distance in cm
-  
   return distance;
 }
 
@@ -79,9 +46,9 @@ void setup() {
 }
 
 void loop() {
-  int frontDist = getDist1();
-  int leftDist = getDist2();
-  int rightDist = getDist3();
+  int frontDist = getDistance(trigPin1, echoPin1);
+  int leftDist = getDistance(trigPin2, echoPin2);
+  int rightDist = getDistance(trigPin3, echoPin3);
 
   // Following Logic
 
