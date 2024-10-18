@@ -10,6 +10,8 @@
 #define motor2Pin1 9
 #define motor2Pin2 10
 
+#define MAX_DISTANCE 400  // Maximum measurable distance of the ultrasonic sensor
+
 // Distance Function
 int getDistance(int trigPin, int echoPin) {
   long duration;
@@ -23,6 +25,11 @@ int getDistance(int trigPin, int echoPin) {
   duration = pulseIn(echoPin, HIGH);
   distance = duration * 0.034 / 2;
 
+  // Cap distance to max measurable distance
+  if (distance > MAX_DISTANCE) {
+    distance = MAX_DISTANCE;
+  }
+  
   return distance;
 }
 
@@ -63,6 +70,9 @@ void loop() {
   } else {
     stopMoving();
   }
+    
+  delay(50); // Small delay between sensor readings to avoid interference
+    
 }
 
 
