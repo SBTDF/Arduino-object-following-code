@@ -10,11 +10,11 @@
 #define motor2Pin1 9
 #define motor2Pin2 10
 
-long duration;
-int distance;
-
 // Distance Function
 int getDist1() {
+  long duration;
+  int distance;
+
   // Clears the trigPin condition
   digitalWrite(trigPin1, LOW);
   delayMicroseconds(2);
@@ -28,6 +28,9 @@ int getDist1() {
 }
 
 int getDist2() {
+  long duration;
+  int distance;
+  
   // Clears the trigPin condition
   digitalWrite(trigPin2, LOW);
   delayMicroseconds(2);
@@ -41,6 +44,9 @@ int getDist2() {
 }
 
 int getDist3() {
+  long duration;
+  int distance;
+
   // Clears the trigPin condition
   digitalWrite(trigPin3, LOW);
   delayMicroseconds(2);
